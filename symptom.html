@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>SYMPTOM TRACKER</title>
+</head>
+<body class="nutrition-body">
+    <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">H.M.S</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="home.html">HOME</a></li>
+                    <li><a href="profile.html">PROFILE</a></li>
+                    <li><a href="service.html">SERVICES</a></li>
+                    <li><a href="contact.html">DOCTOR'S CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+<header class="nutrition-header">
+    <h1 class="nutrition-title">SYMPTOM TRACKER</h1>
+</header>
+<main>
+    <div class="symptom-section">
+    <form id="SymptomsTrackerForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <div class="checkbox-group">
+            <label>Choose Symptoms:</label>
+
+            <input type="checkbox" id="fever" name="symptom" value="Fever" onclick="updateSymptoms()">
+            <label for="fever">Fever</label>
+
+            <input type="checkbox" id="cough" name="symptom" value="Cough" onclick="updateSymptoms()">
+            <label for="cough">Cough</label>
+
+            <input type="checkbox" id="headache" name="symptom" value="Headache" onclick="updateSymptoms()">
+            <label for="headache">Headache</label>
+
+            <input type="checkbox" id="period" name="symptom" value="Period" onclick="updateSymptoms()">
+            <label for="period">Period</label>
+
+            <input type="checkbox" id="fatigue" name="symptom" value="Fatigue" onclick="updateSymptoms()">
+            <label for="fatigue">Fatigue</label>
+
+            <input type="checkbox" id="shortnessOfBreath" name="symptom" value="Shortness of Breath" onclick="updateSymptoms()">
+            <label for="shortnessOfBreath">Shortness of Breath</label>
+        </div>
+
+        <label for="symptoms">Symptoms (separate by commas):</label>
+        <input type="text" id="symptoms" name="symptoms" required>
+
+        <button type="button" onclick="submitSymptoms()">Submit</button>
+    </form>
+
+    <div id="symptomRecords" class="record-container">
+        <!-- Symptom records will be added here dynamically -->
+    </div>
+    </div>
+</main>
+<script>
+function updateSymptoms() {
+    const symptomInputs = document.querySelectorAll('input[name="symptom"]:checked');
+    const symptoms = Array.from(symptomInputs)
+        .map(input => input.value)
+        .join(', ');
+    document.getElementById('symptoms').value = symptoms;
+}
+
+function submitSymptoms() {
+    const data = {
+        name: document.getElementById('name').value,
+        age: document.getElementById('age').value,
+        gender: document.getElementById('gender').value,
+        symptoms: document.getElementById('symptoms').value
+    };
+
+    if (!data.name || !data.age || !data.gender || !data.symptoms) {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    fetch("/symptom/add", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(d => {
+        if (d.status === "success") {
+            loadSymptoms();
+            document.getElementById('SymptomsTrackerForm').reset();
+        }
+    });
+}
+
+function loadSymptoms() {
+    fetch("/symptom/list")
+    .then(res => res.json())
+    .then(records => {
+        const container = document.getElementById('symptomRecords');
+        container.innerHTML = "";
+
+        records.forEach(r => {
+            container.innerHTML += `
+                <div class="record-card">
+                    <h3>${r.name}</h3>
+                    <p><strong>Age:</strong> ${r.age}</p>
+                    <p><strong>Gender:</strong> ${r.gender}</p>
+                    <p><strong>Symptoms:</strong> ${r.symptoms}</p>
+                    <button onclick="deleteSymptom(${r.id})"
+                            style="background:#d9534f;color:white;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;">
+                        Delete
+                    </button>
+                </div>
+            `;
+        });
+    });
+}
+
+function deleteSymptom(id) {
+    fetch(`/symptom/delete/${id}`, {method: "DELETE"})
+    .then(res => res.json())
+    .then(d => {
+        if (d.status === "success") loadSymptoms();
+    });
+}
+
+window.onload = loadSymptoms;
+</script>
+</body>
+<footer>
+    &copy; 2025 H.M.S [Health Management System]. All rights reserved.
+</footer>
+</html>

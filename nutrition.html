@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Nutrition Tracking</title>
+</head>
+<body class="nutrition-body">
+  <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">H.M.S</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="home.html">HOME</a></li>
+                    <li><a href="profile.html">PROFILE</a></li>
+                    <li><a href="service.html">SERVICES</a></li>
+                    <li><a href="contact.html">DOCTOR'S CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+<header class="nutrition-header">
+  <h1 class="nutrition-title">Nutrition Tracking</h1>
+</header>
+<main class="nutrition-main">
+  <form id="nutritionForm" class="nutrition-form">
+    <input type="text" id="foodItem" placeholder="Food Item" required>
+    <input type="date" id="nutritionDate" required>
+    <input type="number" id="calorie" placeholder="Calorie" required>
+    <button type="button" onclick="addNutrition()">Add Record</button>
+  </form>
+  <table class="nutrition-table">
+    <thead>
+      <tr>
+        <th>Food Item</th>
+        <th>Date</th>
+        <th>Calorie</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="nutritionTable"></tbody>
+  </table>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', fetchNutrition);
+
+function fetchNutrition() {
+  fetch('/nutrition/list', { credentials: 'include' })
+    .then(res => res.json())
+    .then(data => {
+      const tbody = document.getElementById('nutritionTable');
+      tbody.innerHTML = '';
+
+      data.forEach(r => {
+        const row = tbody.insertRow();
+        row.insertCell(0).innerText = r.food_item;
+        row.insertCell(1).innerText = r.record_date;
+        row.insertCell(2).innerText = r.calorie;
+
+        // Delete button
+        const action = row.insertCell(3);
+        const delBtn = document.createElement("button");
+        delBtn.innerText = "Delete";
+        delBtn.onclick = () => deleteRecord(r.id);
+        action.appendChild(delBtn);
+      });
+    })
+    .catch(err => console.error("FetchNutrition error:", err));
+}
+
+function addNutrition() {
+  const foodItem = document.getElementById('foodItem').value;
+  const nutritionDate = document.getElementById('nutritionDate').value;
+  const calorie = document.getElementById('calorie').value;
+
+  if (!foodItem || !nutritionDate || !calorie) {
+    alert("Fill all fields");
+    return;
+  }
+
+  fetch('/nutrition/add', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify({
+      food_item: foodItem,
+      record_date: nutritionDate,
+      calorie: calorie
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log("ADD response:", data);
+    if (data.status === 'success') {
+      document.getElementById('nutritionForm').reset();
+      fetchNutrition();
+    } else {
+      alert(data.message || "Add failed");
+    }
+  })
+  .catch(err => console.error("AddNutrition error:", err));
+}
+
+function deleteRecord(id) {
+  fetch(`/nutrition/delete/${id}`, {
+    method: 'DELETE',
+    credentials: 'include'
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === 'success') {
+      fetchNutrition();
+    } else {
+      alert(data.message);
+    }
+  });
+}
+</script>
+</body><br><br><br><br><br><br><br><br><br>
+<footer>
+    &copy; 2025 H.M.S [Health Management System]. All rights reserved.
+</footer>
+</html>

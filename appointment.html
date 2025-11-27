@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+<title>Appointments Scheduler</title>
+</head>
+<body class="nutrition-body">
+  <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">H.M.S</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="home.html">HOME</a></li>
+                    <li><a href="profile.html">PROFILE</a></li>
+                    <li><a href="service.html">SERVICES</a></li>
+                    <li><a href="contact.html">DOCTOR'S CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+<header class="nutrition-header"><h1 class="nutrition-title">Appointments Scheduler</h1></header>
+<main>
+  <div class="appointment-section">
+<form id="appointmentForm">
+    <h2><label for="appointment_input">Record Yours:</label></h2>
+    <input type="text" id="appointment_input" required>
+    <button type="button" class="add-btn" onclick="submitAppointment()">Add</button>
+</form>
+    <h2>Appointments:</h2>
+    <ul id="appointmentsList">
+        <!-- Loaded from backend -->
+    </ul>
+    </div>
+    </div>
+</div>
+</div>
+</main>
+<script>
+function submitAppointment() {
+    const name = document.getElementById('appointment_input').value.trim();
+    if(!name) return;
+
+    fetch("/appointments/add", {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify({patient_name:name})
+    })
+    .then(res=>res.json())
+    .then(result=>{
+        if(result.status==="success"){
+            document.getElementById('appointment_input').value='';
+            loadAppointments();
+        }else{
+            alert(result.message || "Error saving!");
+        }
+    });
+}
+
+function loadAppointments() {
+    fetch("/appointments/list")
+    .then(res=>res.json())
+    .then(records=>{
+        const ul=document.getElementById("appointmentsList");
+        ul.innerHTML="";
+        if(records.length===0){
+            ul.innerHTML="<li>No appointments yet.</li>";
+            return;
+        }
+        records.forEach(r=>{
+            ul.innerHTML+=`<li>${r.patient_name}
+            <button class="delete-btn" onclick="deleteAppointment(${r.id})">Delete</button></li>`;
+        });
+    });
+}
+
+function deleteAppointment(id){
+    if(!confirm("Are you sure to delete?")) return;
+    fetch(`/appointments/delete/${id}`,{method:"DELETE"})
+    .then(res=>res.json())
+    .then(result=>{
+        if(result.status==="success") loadAppointments();
+        else alert("Could not delete!");
+    });
+}
+
+// Load on page load
+window.onload=loadAppointments;
+</script>
+</body><br><br>
+<footer>
+    &copy; 2025 H.M.S [Health Management System]. All rights reserved.
+</footer>
+</html>

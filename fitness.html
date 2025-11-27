@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Workout Plans</title>
+</head>
+<body>
+    <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">H.M.S</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="home.html">HOME</a></li>
+                    <li><a href="profile.html">PROFILE</a></li>
+                    <li><a href="service.html">SERVICES</a></li>
+                    <li><a href="contact.html">DOCTOR'S CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+    <header class="nutrition-header">
+        <h1 class="nutrition-title">Workout Plans</h1>
+    </header>
+    <main>
+        <div class="fitness-section">
+        <form id="workoutPlanForm">
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="exerciseType">Exercise Type:</label>
+            <select id="exerciseType" name="exerciseType" required>
+                <option value="cardio">Cardio</option>
+                <option value="walking">Walking</option>
+                <option value="pushups">Pushups</option>
+                <option value="strengthTraining">Strength Training</option>
+                <option value="squats">Squats</option>
+                <option value="planks">Planks</option>
+                <option value="flexibility">Flexibility</option>
+            </select>
+
+            <label for="duration">Duration (minutes):</label>
+            <input type="number" id="duration" name="duration" required>
+
+            <button type="button" class="add-btn" onclick="submitWorkoutPlan()">Submit</button>
+        </form>
+
+        <div id="workoutPlansContainer">
+            <!-- Workout plans will be added here dynamically -->
+        </div>
+        </div>
+    </main>
+
+    <script>
+        function submitWorkoutPlan() {
+    
+    var age = document.getElementById('age').value;
+
+    var exerciseType = document.getElementById('exerciseType').value;
+    var duration = document.getElementById('duration').value;
+
+    if (!age || !exerciseType || !duration) {
+        alert('Please fill in all fields.');
+        return;
+    }
+
+    fetch('/workout/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ age, exerciseType, duration })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'success') {
+            document.getElementById('workoutPlanForm').reset();
+            fetchWorkouts(); // load workouts below
+        } else {
+            alert(data.message || "Add failed");
+        }
+    })
+    .catch(err => console.error("AddWorkout error:", err));
+}
+
+// Fetch all workouts
+function fetchWorkouts() {
+    fetch('/workout/list', { credentials: 'include' })
+        .then(res => res.json())
+        .then(data => {
+            const container = document.getElementById('workoutPlansContainer');
+            container.innerHTML = '';
+
+            data.forEach(w => {
+                const card = document.createElement('div');
+                card.className = 'workout-card';
+                card.innerHTML = `
+        
+                    <p><strong>Age:</strong> ${w.age}</p>
+                   
+                    <p><strong>Exercise Type:</strong> ${w.exercise_type}</p>
+                    <p><strong>Duration:</strong> ${w.duration} minutes</p>
+                    <button onclick="deleteWorkout(${w.id})">Delete</button>
+                `;
+                container.appendChild(card);
+            });
+        })
+        .catch(err => console.error("FetchWorkouts error:", err));
+}
+
+// Delete workout
+function deleteWorkout(id) {
+    fetch(`/workout/delete/${id}`, {
+        method: 'DELETE',
+        credentials: 'include'
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'success') {
+            fetchWorkouts();
+        } else {
+            alert(data.message || "Delete failed");
+        }
+    })
+    .catch(err => console.error("DeleteWorkout error:", err));
+}
+
+// Load workouts on page load
+document.addEventListener('DOMContentLoaded', fetchWorkouts);
+</script>
+</body>
+<footer>
+    &copy; 2025 H.M.S [Health Management System]. All rights reserved.
+</footer>
+</html>

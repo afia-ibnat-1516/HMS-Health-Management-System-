@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Profile</title>
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <h2 class="logo">H.M.S</h2>
+
+        <div class="menu">
+            <ul>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="profile.html">PROFILE</a></li>
+                <li><a href="service.html">SERVICES</a></li>
+                <li><a href="contact.html">DOCTOR'S CONTACT</a></li>
+            </ul>
+        </div>
+    </div>
+ <div class="profile-page">  
+    <!-- PROFILE BOX -->
+    <div class="profile-container">
+        <h2>User Profile</h2>
+
+        <div class="profile-item">
+            <span>Name:</span>
+            <input type="text" id="name" readonly>
+        </div>
+
+        <div class="profile-item">
+            <span>Email:</span>
+            <input type="text" id="email" readonly>
+        </div>
+
+        <div class="profile-item">
+            <span>Current Password:</span>
+            <input type="text" id="password" readonly>
+        </div>
+
+        <div class="profile-item">
+            <span>New Password:</span>
+            <input type="password" id="newPass" placeholder="Enter new password">
+        </div>
+
+        <div class="profile-item">
+            <span>Confirm Password:</span>
+            <input type="password" id="confirmPass" placeholder="Re-enter new password">
+        </div>
+
+        <button class="btn" onclick="changePassword()">Save New Password</button>
+        <button class="btn logout-btn" onclick="logout()">Log Out</button>
+    </div>
+</div>
+    <script>
+        fetch("/profile", { credentials: "same-origin" })
+.then(res => res.json())
+.then(data => {
+    if (data.error) {
+        alert("You are not logged in!");
+        window.location.href = "/login";
+        return;
+    }
+    document.getElementById("name").value = data.name;     
+    document.getElementById("email").value = data.email;
+    document.getElementById("password").value = data.password;
+});
+
+function changePassword() {
+    const newPass = document.getElementById("newPass").value;
+    const confirmPass = document.getElementById("confirmPass").value;
+
+    if (!newPass || !confirmPass) {
+        alert("Please enter both fields.");
+        return;
+    }
+
+    if (newPass !== confirmPass) {
+        alert("Passwords do not match!");
+        return;
+    }
+
+    fetch("/update_password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify({ new_password: newPass, confirm_password: confirmPass })
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);
+        if (data.status === "success") {
+            document.getElementById("password").value = newPass; // show updated password
+            document.getElementById("newPass").value = "";
+            document.getElementById("confirmPass").value = "";
+        }
+    });
+}
+function logout() {
+        fetch("/logout", {
+            method: "POST",
+            credentials: "same-origin"
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === "success") {
+                window.location.href = "/login"; // redirect to login page
+            }
+        });
+    }
+</script>
+</body>
+<footer>
+    &copy; 2025 H.M.S [Health Management System]. All rights reserved.
+</footer>
+</html>
