@@ -1,0 +1,1467 @@
+/* style.css */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Global font for the entire page */
+body, * {
+    font-family: "Times New Roman", Times, serif;
+    color: #040250;
+}
+
+/* style.css */
+.main {
+    width: 100%;
+    background: #ffffff;  
+    height: 100vh;
+}
+
+/* The rest of your existing styles */
+
+.icon{
+    width: 200px;
+    float: left;
+    height: 70px;
+}
+
+.menu{
+    width: 400px;
+    float: right;
+    height: 70px;
+    align-items: center;
+    margin-left: 420px; /* adjust this value as needed */
+}
+
+ul{
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul li{
+    list-style: none;
+    margin-left: 62px;
+    margin-top: 27px;
+    font-size: 14px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    transition: 0.4s ease-in-out;
+}
+
+ul li a:hover{
+    color: #89bcf2;
+}
+
+.search{
+    width: 330px;
+    float: left;
+    margin-left: 270px;
+}
+
+.srch{
+    font-family: 'Times New Roman';
+    width: 200px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid #66acf7;
+    margin-top: 13px;
+    color: #fff;
+    border-right: none;
+    font-size: 16px;
+    float: left;
+    padding: 10px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.btn{
+    width: 100px;
+    height: 40px;
+    background: #66acf7;
+    border: 2px solid #66acf7;
+    margin-top: 13px;
+    color: #fff;
+    font-size: 15px;
+    border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+.btn:hover{
+    color: #000;
+}
+
+.btn:focus{
+    outline: none;
+}
+
+.srch:focus{
+    outline: none;
+}
+
+.content{
+    width: 1200px;
+    height: auto;
+    margin: auto;
+    color: #081e61;
+    font-size: 40px;
+    position: relative;
+}
+
+.content .par{
+    padding-left: 20px;
+    padding-bottom: 25px;
+    font-family: 'Times New Roman';
+    font-size: 40px;
+    letter-spacing: 1.2px;
+    line-height: 30px;
+}
+
+.h1-container {
+    display: flex;
+    align-items: center; /* vertically center h1 and image */
+    gap: 150px;           /* space between h1 and image */
+}
+.content h1{
+    font-family: 'Times New Roman';
+    font-size: 100px;
+    padding-left: 20px;
+    margin-top: 9%;
+    letter-spacing: 2px;
+    animation: shadowMove 2s infinite linear;
+}
+
+.h1-image {
+    width: 500px;  /* adjust size */
+    height: 500px; /* make it a perfect square for a perfect circle */
+    border-radius: 50%; /* makes the image round */
+    object-fit: cover;   /* ensures image fills the circle without distortion */
+}
+
+@keyframes shadowMove {
+    0% {
+        text-shadow: 2px 2px 5px #ff0000,
+                     -2px -2px 5px #00ff00,
+                     2px -2px 5px #0000ff;
+    }
+    50% {
+        text-shadow: -2px -2px 5px #ff0000,
+                      2px 2px 5px #00ff00,
+                     -2px 2px 5px #0000ff;
+    }
+    100% {
+        text-shadow: 2px 2px 5px #ff0000,
+                     -2px -2px 5px #00ff00,
+                     2px -2px 5px #0000ff;
+    }
+}
+.content .cn{
+    width: 160px;
+    height: 40px;
+    background: #66acf7;
+    border: none;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .4s ease;
+    
+}
+
+.content .cn a{
+    text-decoration: none;
+    color: #000;
+    transition: .3s ease;
+}
+
+.cn:hover{
+    background-color: #fff;
+}
+
+
+.dashboard {
+            background-color: #f8f9fa; /* Light gray background */
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dashboard h2 {
+            color: #007bff; /* Blue header text color */
+            font-family: 'Arial', sans-serif; /* Choose your preferred font family */
+            margin-bottom: 10px;
+        }
+        
+        /* Health Information and Appointments Sections */
+        .health-info, .appointments {
+            margin-top: 20px;
+        }
+        
+        .health-info h3, .appointments h3 {
+            color: #343a40; /* Dark text color for section headers */
+            border-bottom: 2px solid #6c757d; /* Border color under section headers */
+            padding-bottom: 5px;
+            font-size: 20px;
+        }
+        
+        .health-info ul, .appointments ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .health-info li, .appointments li {
+            margin: 10px 0;
+            font-weight: bold;
+            color: #495057; /* Dark text color for list items */
+        }
+        
+        /* Optional: Add hover effect on list items */
+        .health-info li:hover, .appointments li:hover {
+            background-color: #e9ecef; /* Light gray background on hover */
+            transition: background-color 0.3s;
+        }
+
+       .staff-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* aligns content to the right */
+    padding: 20px 50px 0 50px; /* top and horizontal spacing */
+}
+
+.staff-image {
+    width: 400px;         /* adjust size */
+    height: auto;
+    border-radius: 10px;  /* optional rounded corners */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* optional shadow */
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;  
+}
+
+    /* Container for all content */
+    .page-container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px 20px;
+    }
+
+    /* Heading & Paragraph */
+
+    .hero-content p {
+    font-size: 28px;                 /* slightly larger */
+    font-weight: 800;                /* medium-bold */
+    line-height: 1.8;
+    padding: 40px 90px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.4); /* semi-transparent dark */
+    color: #fff;                     /* text color */
+    text-align: center;
+    max-width: 1000px;               /* wider box */
+    width: 90%;                      /* responsive width */
+    margin: 0 auto; 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5); /* subtle depth */
+    border: 2px solid rgba(102, 172, 247, 0.8); /* bright border */
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);   /* subtle shadow */
+    transition: all 0.3s ease;
+}
+
+.hero-content p:hover {
+    background: linear-gradient(135deg, #2274df, #154da7); /* gradient on hover */
+    color: #fff;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+    transform: translateY(-3px);
+}
+
+    /* Moving Images Section */
+.image-row {
+    display: flex;
+    justify-content: center;
+    align-items: right;
+    gap: 80px;                 /* more space between images */
+    margin: 60px 0 80px 0;     /* extra space above & below */
+    z-index: 2;                /* make sure it appears above background */
+}
+
+.image-row img {
+    width: 400px;              /* larger size */
+    max-width: 90%;            /* responsive on smaller screens */
+    height: auto;
+    border-radius: 50%;        /* round shape for emphasis */
+    animation: float 4s ease-in-out infinite alternate;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5); /* stronger shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-row img:hover {
+    transform: translateY(-10px) scale(1.05); /* lift and slightly enlarge on hover */
+    box-shadow: 0 14px 35px rgba(0,0,0,0.6);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }  /* smoother floating */
+    100% { transform: translateY(0px); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .image-row {
+        flex-direction: column;
+        gap: 50px;
+        margin: 40px 0;
+    }
+
+    .image-row img {
+        width: 250px;
+    }
+}
+
+    /* Form Section */
+    .form-box {
+      background: rgba(255,255,255,0.9);
+      color: #333;
+      padding: 40px;
+      border-radius: 12px;
+      width: 360px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .form-box h2 {
+      margin-bottom: 25px;
+      color: #66acf7;
+      font-size: 26px;
+    }
+
+    .form-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .btnn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #66acf7;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .btnn:hover {
+      background: #0056b3;
+    }
+
+    .link {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .link a {
+      color: #66acf7;
+      text-decoration: none;
+    }
+
+    .link a:hover {
+      text-decoration: underline;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .image-row {
+        flex-direction: column;
+      }
+    }
+
+.hero {
+  width: 100%;
+  min-height: 80vh;
+  background-color: #f3f4fd; /* Light background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.3);
+      padding: 15px 25px;
+      border-radius: 10px;
+}
+
+.hero-text {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.hero-text h1 {
+  font-size: 50px;
+  margin: 0;
+}
+
+.typing-text {
+  display: inline-block;
+  font-size: 40px;
+  font-style: italic;
+  font-weight: 800;
+  color: #05123f;
+  border-right: 2px solid #555; /* cursor effect */
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 14s steps(60, end) infinite, blink 0.7s step-end infinite;
+}
+
+/* Typing and erasing effect */
+@keyframes typing {
+  0% { width: 0 }
+  50% { width: 100% }
+  100% { width: 0 }
+}
+
+/* Blinking cursor */
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: #555 }
+}
+
+.hero-image {
+  margin: 30px 0; /* spacing from headings and paragraph */
+}
+
+.hero-image img {
+  width: 350px;       /* size of the image */
+  height: 350px;      /* make it square for perfect circle */
+  border-radius: 50%; /* makes it round */
+  object-fit: cover;  /* ensures image fills the circle without distortion */
+  display: block;
+  margin: 0 auto;     /* centers the image */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4); /* optional shadow for depth */
+}
+
+    /* Container */
+    .page-container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px 20px;
+    }
+
+    .hero-container {
+  display: flex;
+  justify-content: space-between; /* text left, image right */
+  align-items: center;           /* vertically center */
+  flex-wrap: wrap;               /* responsive stacking on small screens */
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+    /* Heading & Paragraph */
+    .hero-content {
+      text-align: center;
+      max-width: 800px;
+      margin-bottom: 50px;
+    }
+
+    .hero-content h1 {
+      font-size: 48px;
+      color: #66acf7;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      line-height: 1.6;
+      background: rgba(0,0,0,0.3);
+      padding: 15px 25px;
+      border-radius: 10px;
+    }
+
+    /* Moving Images */
+    .image-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      margin-bottom: 50px;
+    }
+
+    .image-row img {
+      width: 300px;
+      border-radius: 12px;
+      animation: float 4s ease-in-out infinite alternate;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-20px); }
+    }
+
+    /* Form Section */
+    .form-box {
+      background: rgba(255,255,255,0.9);
+      color: #333;
+      padding: 40px;
+      border-radius: 12px;
+      width: 360px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .form-box h2 {
+      margin-bottom: 25px;
+      color: #66acf7;
+      font-size: 26px;
+    }
+
+    .form-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .btnn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #66acf7;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .btnn:hover {
+      background: #0056b3;
+    }
+
+    .link {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .link a {
+      color: #66acf7;
+      text-decoration: none;
+    }
+
+    .link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .image-row {
+        flex-direction: column;
+      }
+    }
+
+    /* Navbar container */
+.navbar {
+    width: 100%;
+    display: flex;
+    align-items: center; /* vertical center for all items */
+    padding: 15px 50px;
+    background: #040250; /* dark navbar */
+    font-family: "Times New Roman", Times, serif; 
+}
+
+/* Logo */
+.logo {
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    margin-right: 40px; /* space between logo and menu */
+    font-family: "Times New Roman", Times, serif; /* ensure same font */
+}
+
+/* Menu */
+.menu ul {
+    display: flex;
+    list-style: none;
+    gap: 0; /* items touching borders */
+}
+
+.menu ul li {
+    padding: 0 20px;
+    color: white;
+    font-weight: 500;
+    font-family: "Times New Roman", Times, serif; /* ✅ correct */
+    border-right: 2px solid #060675;
+}
+
+
+.menu ul li:last-child {
+    border-right: none; /* remove last border */
+}
+
+
+/* Full-width container for cards */
+.service-container {
+    display: flex;
+    flex-wrap: wrap;         /* wrap cards to next row */
+    justify-content: flex-start; /* align to left */
+    gap: 20px;               /* space between cards */
+    width: 100%;             /* full page width */
+    padding: 20px;           /* optional padding */
+    box-sizing: border-box;
+}
+
+/* Individual service card */
+.service-card {
+    background: #04115b;
+    border: 2px solid var(--accent-color);
+    border-radius: 15px;
+    width: calc(33.33% - 20px); /* 3 cards per row minus gap */
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 0 20px var(--accent-color);
+    transition: 0.3s ease;
+    box-sizing: border-box;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 40px var(--accent-color);
+}
+
+.round-image {
+    width: 150px;          /* set a width */
+    height: 150px;         /* make height equal to width */
+    border-radius: 50%;    /* make it round */
+    object-fit: cover;     /* ensures image covers the circle */
+    display: block;        /* optional, avoids inline spacing issues */
+}
+
+/* Card info */
+.service-info {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+
+.service-info h3 {
+    font-size: 1rem;
+    color: var(--accent-color);
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px var(--accent-color);
+}
+
+.service-info p {
+    font-size: 0.85rem;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+/* Button */
+.service-button {
+    display: inline-block;
+    background-color: #1e90ff; /* bright blue */
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.service-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive: 2 cards per row on tablets */
+@media (max-width: 900px) {
+    .service-card {
+        width: calc(50% - 20px);
+    }
+}
+
+/* Responsive: 1 card per row on mobile */
+@media (max-width: 600px) {
+    .service-card {
+        width: 100%;
+    }
+}
+      header {
+            background-color: #022054;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+        
+      .content {
+            text-align: center;
+            color: #020949;
+        }
+
+       h1 {
+            color: #020949;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+       p {
+            color: #020949;
+            font-size: 25px;
+        }
+        @keyframes pulse {
+            0% { color: #042e61; }
+            100% { color: #fff; }
+        }
+        h2 {
+            color: #0b83af;
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+        h3 {
+            color: #ffffff;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            color: #cfd8dc;
+        }
+
+  /* Container for all doctor cards */
+.content {
+    display: flex;
+    flex-wrap: wrap;     
+    gap: 20px;          
+    justify-content: center;  
+}
+/* Doctor card */
+.doctor-info {
+    width: 300px;                    
+    background-color: #052076;
+    border: 1px solid #081d4b;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(249, 249, 250, 0.696);
+    transition: transform 0.3s ease;
+    text-align: center;              
+}
+/* Hover effect */
+.doctor-info:hover {
+    transform: translateY(-5px);
+}
+/* Doctor image */
+.doctor-info img {
+    width: 150px;
+    height: 150px;       
+    object-fit: cover;  
+    border-radius: 50%;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+.doctor-info:hover img {
+    transform: scale(1.1);
+}
+/* Doctor name */
+.doctor-info strong {
+    color: #aeebf9;
+    font-size: 22px;
+}
+/* Text inside card */
+.doctor-info p {
+    font-size: 16px;
+    color: #feffff;
+    font-weight: normal;
+    line-height: 1.5;
+}
+footer {
+    width: 100%;
+    background: rgba(3, 27, 106, 0.7);  
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 18px; 
+    bottom: 0;
+    left: 0;
+    backdrop-filter: blur(5px);       
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.4); 
+}
+/* ---------------------------
+   INDEX PAGE — HERO TITLE
+---------------------------- */
+.index-page .hero-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 60px;
+  font-weight: bold;
+
+  background: linear-gradient(90deg, #7fcaff, #7873f5);
+ background-clip: text;
+-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 10px #0849ac,
+    0 0 20px #1b14e6,
+    0 0 30px #083d9a,
+    0 0 40px #3531ad;
+
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  border-radius: 50%;
+  background-color: rgba(10, 10, 50, 0.8);
+
+  border: 5px solid rgb(2, 4, 86);
+
+  box-shadow:
+    0 0 20px skyblue,
+    0 0 40px skyblue,
+    0 0 60px skyblue;
+
+  display: inline-block;
+  text-align: center;
+}
+.index-page .content-box {
+    background-color: navy;         /* navy blue box */
+    color: white;                   /* white text */
+    padding: 20px;                  /* space inside */
+    border-radius: 10px;            /* rounded corners */
+    margin-top: 20px;               /* spacing above */
+    max-width: 800px;               /* optional: limit width */
+    line-height: 1.6;               /* better readability */
+    box-shadow: 0 0 20px rgba(0,0,0,0.4); /* soft shadow */
+}
+.index-page .content-box p {
+    color: white;
+    font-size: 24px;                 
+}
+.login-page .content-box {
+    background-color: navy;         /* navy blue box */
+    color: white;                   /* white text */
+    padding: 20px;                  /* space inside */
+    border-radius: 10px;            /* rounded corners */
+    margin-top: 20px;               /* spacing above */
+    max-width: 800px;               /* optional: limit width */
+    line-height: 1.6;               /* better readability */
+    box-shadow: 0 0 20px rgba(0,0,0,0.4); /* soft shadow */
+}        
+
+.login-page .content-box p {
+    color: white;
+    font-size: 24px;
+}
+
+/* ****************************
+   Nutrition Page Styling
+   (nutrition.html)
+***************************** */
+
+/* Page layout */
+.nutrition-body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #eef;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header */
+.nutrition-header {
+    background: #041a5a;
+    padding: 1em;
+    width: 100%;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif; 
+}
+.nutrition-title {
+    color: #ffffff;  /* change color here */
+    font-weight: bold;
+}
+
+/* Main container */
+.nutrition-main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+}
+
+/* Form */
+.nutrition-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+}
+
+.nutrition-form input,
+.nutrition-form button {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.nutrition-form button {
+    background: #051f57;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Table */
+.nutrition-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.nutrition-table th,
+.nutrition-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.nutrition-table th {
+    background: #06224c;
+    color: white;
+}
+
+.nutrition-table tbody tr {
+    background: #f9f9f9;
+}
+
+/* Delete Button */
+.delete-btn {
+    background: #8d0404;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Medication Page Styles */
+.medication-section form {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.medication-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.medication-section input,
+.medication-section select,
+.medication-section textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.medication-section button {
+    background-color: #0c225f;
+    color: #ffffff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.medication-section button:hover {
+    background-color: #0c225f;
+}
+
+.medication-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.medication-section th,
+.medication-section td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.medication-section th {
+    background-color: #110a5f;
+    color: #fff;
+}
+
+/* Symptom Page Styles */
+.symptom-section form {
+    max-width: 3000px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block; /* Align the form to the left */
+    margin-bottom: 20px; /* Space below the form */
+}
+
+.symptom-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.symptom-section input,
+.symptom-section select {
+    width: calc(100% - 20px); /* Adjust width to fit beside checkboxes */
+    padding: 10px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.symptom-section button {
+    background-color: #082256;
+    color: #ffffff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.symptom-section button:hover {
+    background-color: hwb(216 19% 22% / 0.749);
+}
+
+.symptom-section h1 {
+    color: #fafafa;
+}
+
+.symptom-section .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.symptom-section .checkbox-group label {
+    margin-right: 20px;
+}
+
+.symptom-section .record-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.symptom-section .record-card {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.symptom-section .record-card h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #045286;
+}
+
+.symptom-section .record-card p {
+    margin: 8px 0;
+    color: #333;
+}
+
+/* Appointment Page Styles */
+.appointment-section {
+    max-width: 600px;  /* bigger container */
+    margin: 40px auto;
+    text-align: center;
+    font-size: 18px;  /* overall bigger text */
+}
+
+.appointment-section form {
+    background: #fff;
+    padding: 30px;  /* bigger padding */
+    border-radius: 12px;  /* more rounded */
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);  /* stronger shadow */
+    margin-bottom: 30px;
+}
+
+.appointment-section input {
+    width: 100%;
+    padding: 15px;  /* bigger input fields */
+    margin-bottom: 18px;
+    border: 2px solid #ccc;  /* thicker border */
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 18px;  /* bigger input text */
+}
+
+.appointment-section .add-btn {
+    display: block;
+    margin: 20px auto;         /* center and add spacing */
+    padding: 3px 10px;        /* extra big size */
+    background-color: #040444; /* navy blue */
+    color: #fff;               /* white text */
+    border: none;
+    border-radius: 10px;       /* bigger rounded corners */
+    cursor: pointer;
+    font-size: 22px;           /* large text */
+    font-weight: bold;         /* bold text */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* shadow for depth */
+    transition: 0.3s ease;     /* smooth hover effect */
+}
+
+.appointment-section .add-btn:hover {
+    background-color: #00005a; /* darker navy on hover */
+    transform: scale(1.05);    /* slight zoom effect */
+}
+
+.appointment-section .appointments-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    text-align: left;
+}
+
+.appointment-section .appointments-box h2 {
+    color: #1985a1;
+    margin-bottom: 18px;
+    font-size: 24px;  /* bigger heading */
+}
+
+.appointment-section ul {
+    list-style: none;
+    background-color: #fff;   
+    padding: 0;
+}
+
+.appointment-section li {
+    padding: 12px;
+    border-bottom: 2px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;  /* bigger list text */
+}
+.appointment-section .appointments-box {
+    background: #fff;  /* white background */
+    color: #000;       /* black text */
+}
+.appointment-section li {
+    color: #000;       /* black text */
+}
+.appointments-box {
+    background-color: #fff;                 /* white background */
+    padding: 20px 30px;                     /* space inside the box */
+    border-radius: 12px;                     /* rounded corners */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* subtle shadow */
+    max-width: 600px;                        /* optional width */
+    margin: 20px auto;                       /* center on page */
+}
+
+.appointments-box ul {
+    list-style: none;
+    background-color: #fff;      /* remove bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.appointments-box li {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+    color: #000;        /* black text */
+}
+
+.appointment-section .delete-btn {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 6px 14px;  /* bigger delete button */
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Fitness Section Styles */
+/* Fitness Section Styles - Bigger Version */
+.fitness-section {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #d7e8f4, #e9f2f6);
+    min-height: 100vh;  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* vertical centering */
+    align-items: center;      /* horizontal centering */
+    text-align: center;
+    padding: 3em;             /* more padding */
+}
+
+.fitness-section header,
+.fitness-section footer {
+    width: 100%;
+    font-size: 2rem;          /* bigger header/footer text */
+}
+
+.fitness-section main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    width: 100%;
+}
+
+.fitness-section form {
+    max-width: 500px;         /* bigger form */
+    width: 100%;
+    background-color: #fff;
+    padding: 30px;             /* more padding */
+    border-radius: 12px;       /* slightly more rounded */
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);  /* stronger shadow */
+    margin-bottom: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.fitness-section form label {
+    margin-bottom: 12px;
+    font-size: 1.4rem;        /* bigger label text */
+    font-weight: bold;
+}
+
+.fitness-section form input,
+.fitness-section form select {
+    margin-bottom: 20px;
+    padding: 14px 12px;       /* bigger input height */
+    font-size: 1.2rem;        /* bigger input text */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.fitness-section form button {
+    margin-top: 10px;
+    font-size: 1.5rem;        /* bigger button text */
+    padding: 16px 25px;       /* bigger button padding */
+    border-radius: 10px;
+}
+
+.fitness-section .add-btn {
+    background-color: #000080;  
+    color: #fff;                
+    font-size: 1.5rem;          /* bigger text */
+    font-weight: bold;          
+    padding: 18px 30px;         /* bigger button */
+    border: none;
+    border-radius: 10px;        
+    cursor: pointer;
+    width: 100%;                
+    transition: 0.3s ease;
+}
+
+.fitness-section .add-btn:hover {
+    background-color: #00005a;  
+    transform: scale(1.05);     /* slightly bigger hover zoom */
+}
+
+/* Workout cards */
+.fitness-section .workout-card {
+    background-color: #fff;
+    padding: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 80%;          /* smaller than full width for centering */
+    max-width: 800px;
+}
+.fitness-section .delete-btn {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 6px 14px;  /* bigger delete button */
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Tips Section Styles */
+.tips-section {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #dfe9ef, #dceaf2);
+    margin: 0;
+    padding: 20px;
+}
+
+.tips-section header {
+    background-color: #051955;  /* navy header */
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+.tips-section h1 {
+    margin: 0;
+}
+
+/* Container for tips/articles */
+.tips-section .container {
+    max-width: 1200px;  /* reasonable max width */
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Tip / Article card */
+.tips-section .tip,
+.tips-section .article {
+    background-color: rgba(0, 102, 255, 0.36);  /* semi-transparent blue */
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.tips-section .tip h2,
+.tips-section .article h2 {
+    margin-top: 0;
+}
+
+/* Image inside tips/articles */
+.tips-section .image {
+    max-width: 225px;
+    height: auto;
+    margin-right: 12px;
+}
+
+/* Flex container for image + text */
+.tips-section .image-container {
+    display: flex;
+    align-items: flex-start;
+}
+.tips-section .image {
+    width: 200px;          /* fixed width */
+    height: 200px;         /* fixed height */
+    border-radius: 70%;    /* makes it circular */
+    object-fit: cover;     /* fills the circle without distortion */
+    margin-right: 12px;
+}
+
+/* Profile Page Styles */
+.profile-page {
+    font-family: Arial, sans-serif;
+    background: #e5eef5;
+}
+
+.profile-page .profile-container {
+    max-width: 450px;
+    margin: 60px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+}
+
+.profile-page .profile-container h2 {
+    text-align: center;
+    color: #05255c;
+    margin-bottom: 20px;
+}
+
+.profile-page .profile-item {
+    margin-bottom: 18px;
+    font-size: 18px;
+}
+
+.profile-page .profile-item span {
+    font-weight: bold;
+    color: #05255c;
+}
+
+.profile-page .profile-item input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.profile-page .btn {
+    width: 100%;
+    padding: 10px;
+    background: #05255c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.profile-page .btn:hover {
+    background: #031a40;
+}
+
+.profile-page .logout-btn {
+    background: #a40000;
+}
+
+.profile-page .logout-btn:hover {
+    background: #7a0000;
+}
